@@ -21,8 +21,8 @@ public class Test {
 
 	public static void main(String[] args) {
 		GroupTeamManagement pm=new GroupTeamManagement();
-		boolean a = pm.CheckAuhourity(1, 1, 1);
-		if (a){
+		String a = pm.changeGroup(1, 1, 3);
+		if (true){
 			String s = "";
 			s = "1";
 		}

@@ -41,14 +41,14 @@ public class GroupDAO {
 		pDAO.publicDelete(group);
 	}
 	
-	public byte[] GetAuthority(Integer projectID,Integer userID)
+	public Group GetTargetGroup(Integer projectID,Integer userID)
 	{
 	 	String[] types={"i","i"};
 		Object[] paras={projectID,userID};
 	    Object[] Result=(Object[]) pDAO.publicAdvancedSearch(types, paras, SQLCommand.CHECK_AUTHORITY).get(0);
 		Group TrueResult=(Group) (Result[1]);
 		if (TrueResult!=null){
-			return  TrueResult.getAuthorityMap();
+			return  TrueResult;
 		}
 			else return null;
 	}

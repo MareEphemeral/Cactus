@@ -46,12 +46,12 @@ public class GroupTeamManagement {
 			return null;
 		}	
 	}
-	public boolean CheckAuhourity(int userID,int projectID,int type)
+	public boolean checkAuhourity(int userID,int projectID,int type)
 	{
 		boolean result=false;
 		GroupDAO groupD=new GroupDAO();
-		byte temp = groupD.GetAuthority(projectID, userID)[type];
-		if (temp==(byte)1)
+		byte[] temp = (groupD.GetTargetGroup(projectID, userID)).getAuthorityMap();
+		if (temp[type]==(byte)1)
 		{
 			result = true;
 		}
@@ -93,6 +93,21 @@ public class GroupTeamManagement {
 			result="Get Failed";
 			return null;
 		}	
+	}
+	
+	public String changeGroup(Integer userID, Integer oldGroupID,Integer newGroupID)
+	{
+		RGroupUserDAO groupDAO=new RGroupUserDAO();
+		try{
+			RGroupUser temp = groupDAO.GetRelation(userID, oldGroupID);
+			temp.setGroupID(newGroupID);
+			groupDAO.updateMember(temp);
+			return "Change Success";
+		}
+		catch(Exception e)
+		{
+			return "Change Failed";
+		}
 	}
 	
 	public String DeleteMember(Integer memberID,Integer groupID)
@@ -149,5 +164,13 @@ public class GroupTeamManagement {
 		}	
 	}
 	
-	
+	public String getMyGroupNumber(Integer projectID,Integer userID)
+	{
+		GroupDAO groupD=new GroupDAO();
+		Group temp = null;
+		temp = groupD.GetTargetGroup(projectID, userID);
+		if (temp==null)
+			return "Default";
+		else return temp.getID().toString();
+	}
 }
