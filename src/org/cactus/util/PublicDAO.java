@@ -89,6 +89,25 @@ public class PublicDAO {
         }        
 	}
 	
+	public void publicDelete(Object o)
+	{
+		Session session = null;
+        Transaction tx = null;
+        try {
+        	session = SessionFactory.currentSession();
+            tx = session.beginTransaction();
+            session.delete(o);
+            tx.commit ();
+        }catch(Exception e){
+        	if (tx!=null) {
+                tx.rollback();
+            }
+        }finally{  
+            SessionFactory.closeSession();
+        }        
+	}
+	
+	
 	public void publicUpdate(Object o)
 	{
 		Session session = null;

@@ -1,7 +1,7 @@
 package org.cactus.pojo;
 
 public class Team {
-	private Integer teamID;
+	private Integer ID;
 	private String teamName;
 	private String teamIntro;
 	private Integer creatorID;
@@ -15,12 +15,12 @@ public class Team {
 		this.creatorID = creatorID;
 	}
 
-	public Integer getTeamID() {
-		return teamID;
+	public Integer getID() {
+		return ID;
 	}
 
-	public void setTeamID(Integer teamID) {
-		this.teamID = teamID;
+	public void setID(Integer ID) {
+		this.ID = ID;
 	}
 
 	public String getTeamName() {

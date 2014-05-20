@@ -1,77 +1,51 @@
 package org.cactus.dao;
 
+import java.util.List;
+
 import org.cactus.pojo.RGroupUser;
+import org.cactus.pojo.RProjectUser;
 import org.cactus.pojo.RUserTask;
+import org.cactus.util.PublicDAO;
 import org.cactus.util.SQLCommand;
 import org.cactus.util.SessionFactory;
+import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 public class RGroupUserDAO {
 
-	public void InsertMember(Integer groupID, Integer userID)
-	{
-		Session session = null;
-        Transaction tx = null;
-        RGroupUser relation = new RGroupUser(groupID,userID);
-        try {
-        	session = SessionFactory.currentSession();
-            tx = session.beginTransaction();
-            session.save(relation);
-            tx.commit ();
-        }catch(Exception e){
-        	if (tx!=null) {
-                tx.rollback();
-            }
-        }finally{  
-            SessionFactory.closeSession();
-        }        
+	PublicDAO pDAO;
+	public RGroupUserDAO(){
+		pDAO=new PublicDAO();
 	}
 	
-	public RGroupUser GetRelation(Integer groupID, Integer userID)
+	public void insertMember(RGroupUser user)
 	{
-		Session session = null;
-        Transaction tx = null;
-        RGroupUser relation = null;
-        try {
-        	session = SessionFactory.currentSession();
-            tx = session.beginTransaction();
-            Query query = session.createQuery(SQLCommand.FIND_RELATION_BY_GROUP_USER);
-            query.setInteger(0, groupID);
-            query.setInteger(1, userID);
-            relation = (RGroupUser)query.uniqueResult();
-            query = null;
-            tx.commit ();
-        }catch(Exception e){
-        	if (tx!=null) {
-                tx.rollback();
-            }
-        }finally{  
-            SessionFactory.closeSession();       
-        }     
-        return relation;
+		pDAO.publicInsert(user);
 	}
 	
-	public void DeleteRelation(Integer relationID)
+	public void deleteMember(RGroupUser user)
 	{
-		Session session = null;
-        Transaction tx = null;
-        RGroupUser relation = new RGroupUser();
-        relation.setID(relationID);
-        try {
-        	session = SessionFactory.currentSession();
-            tx = session.beginTransaction();
-            session.delete(relation);
-            tx.commit ();
-        }catch(Exception e){
-        	if (tx!=null) {
-                tx.rollback();
-            }
-        }finally{  
-            SessionFactory.closeSession();
-        }        
+		pDAO.publicDelete(user);
 	}
+	
+	public void updateMember(RGroupUser user)
+	{
+		pDAO.publicUpdate(user);
+	}
+	
+	
+	public  RGroupUser GetRelation(Integer userID, Integer groupID) throws HibernateException {
+		String[] types={"i","i"};
+		Object[] paras={groupID,userID};
+		List<Object> Result=pDAO.publicAdvancedSearch(types, paras, SQLCommand.FIND_RELATION_BY_GROUP_USER);
+		if (!Result.isEmpty()){
+			return (RGroupUser) Result.get(0);
+		}
+			else return null;
+	}
+	
 	
 	
 }

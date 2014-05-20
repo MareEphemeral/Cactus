@@ -9,6 +9,7 @@ import org.cactus.dao.RGroupUserDAO;
 import org.cactus.dao.RProjectUserDAO;
 import org.cactus.dao.TaskSetDAO;
 import org.cactus.pojo.Group;
+import org.cactus.pojo.RGroupUser;
 import org.cactus.pojo.TaskSet;
 import org.cactus.pojo.User;
 
@@ -17,40 +18,20 @@ public class GroupTeamManagement {
 	public String CreateGroup(String groupName,byte[] authorityMap,Integer projectID){	
 		String result="Ready";
 		GroupDAO group=new GroupDAO();
+		Group targetGroup=new Group(groupName, authorityMap, projectID);
 		try{
-			group.InsertGroup(groupName, authorityMap, projectID);
-			result="Send Success";
+			group.insertGroup(targetGroup);
+			result="Create Success";
 		}
 		catch(Exception ex)
 		{
-			result="Send Failed";
-		}	
-		return result;
-	}
-	
-	public String SetAuthority(Integer AuthorityType, Integer groupID, byte newAuthority){	
-
-		String result="ready";
-		GroupDAO groupD=new GroupDAO();
-		Group tempGroup= GetGroupID(groupID);
-		byte[] tempAuthorityMap=tempGroup.getAuthorityMap();
-		tempAuthorityMap[AuthorityType]=newAuthority;
-		tempGroup.setAuthorityMap(tempAuthorityMap);
-		
-		try{
-			groupD.UpdateGroup(tempGroup.getID(), tempGroup.getGroupName(), tempGroup.getAuthorityMap(), tempGroup.getProjectID());
-			result="Get Success";
-		}
-		catch(Exception ex)
-		{
-			result="Get Failed";
-		
+			result="Create Failed";
 		}	
 		return result;
 	}
 	
 	public Group GetGroupID(Integer groupID){
-	
+		
 		String result="Ready";
 		GroupDAO groupD=new GroupDAO();
 		Group group;
@@ -64,6 +45,27 @@ public class GroupTeamManagement {
 			result="Get Failed";
 			return null;
 		}	
+	}
+	
+	public String SetAuthority(Integer AuthorityType, Integer groupID, byte newAuthority){	
+
+		String result="ready";
+		GroupDAO groupD=new GroupDAO();
+		Group tempGroup= GetGroupID(groupID);
+		byte[] tempAuthorityMap=tempGroup.getAuthorityMap();
+		tempAuthorityMap[AuthorityType]=newAuthority;
+		tempGroup.setAuthorityMap(tempAuthorityMap);
+		
+		try{
+			groupD.UpdateGroup(tempGroup);
+			result="Get Success";
+		}
+		catch(Exception ex)
+		{
+			result="Get Failed";
+		
+		}	
+		return result;
 	}
 	
 	public List<Group> GetGroupByProject(Integer projectID)
@@ -88,7 +90,7 @@ public class GroupTeamManagement {
 		String result="Ready";
 		Integer relationID = -1;
 		RGroupUserDAO relationD=new RGroupUserDAO();
-		relationID = relationD.GetRelation(groupID, memberID).getID();
+		relationID = relationD.GetRelation(memberID,groupID).getID();
 		if (relationID==-1)
 		{
 			result="Delete Member Failed";
@@ -96,7 +98,9 @@ public class GroupTeamManagement {
 		}
 		else
 		{
-			relationD.DeleteRelation(relationID);
+			RGroupUser relation =new RGroupUser();
+			relation.setID(relationID);
+			relationD.deleteMember(relation);
 			result="Delete Member Success";
 		}
 		return result;
@@ -107,7 +111,8 @@ public class GroupTeamManagement {
 		String result="Ready";
 		RGroupUserDAO relationD=new RGroupUserDAO();
 		try{
-			relationD.InsertMember(groupID, memberID);
+			RGroupUser relation =new RGroupUser(groupID, memberID);
+			relationD.insertMember(relation);
 			result="Add Member Success";
 		}
 		catch(Exception ex)

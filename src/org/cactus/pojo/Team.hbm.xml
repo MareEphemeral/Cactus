@@ -4,8 +4,8 @@
 <!-- Generated 2014-5-7 21:10:49 by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
     <class name="org.cactus.pojo.Team" table="TEAM">
-        <id name="teamID" type="java.lang.Integer">
-            <column name="TEAMID" />
+        <id name="ID" type="java.lang.Integer">
+            <column name="team_id" />
             <generator class="identity" />
         </id>
         <property name="teamName" type="java.lang.String">

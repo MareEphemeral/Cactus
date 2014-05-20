@@ -7,6 +7,7 @@ import org.cactus.dao.RGroupUserDAO;
 import org.cactus.dao.RTeamUserDAO;
 import org.cactus.dao.TeamDAO;
 import org.cactus.pojo.Group;
+import org.cactus.pojo.RTeamUser;
 import org.cactus.pojo.Team;
 import org.cactus.pojo.User;
 
@@ -15,8 +16,25 @@ public class TeamManagement {
 	public String CreateTeam(String teamName, String teamIntro, Integer creatorID){	
 		String result="Ready";
 		TeamDAO teamD=new TeamDAO();
+		Team targerTeam=new Team(teamName, teamIntro, creatorID);
 		try{
-			teamD.InsertTeam(teamName, teamIntro, creatorID);
+			teamD.insertTeam(targerTeam);
+			result="Send Success";
+		}
+		catch(Exception ex)
+		{
+			result="Send Failed";
+		}	
+		return result;
+	}
+	
+	public String DeleteTeam(Integer teamID){	
+		String result="Ready";
+		TeamDAO teamD=new TeamDAO();
+		Team targerTeam=new Team();
+		targerTeam.setID(teamID);
+		try{
+			teamD.deleteTeam(targerTeam);
 			result="Send Success";
 		}
 		catch(Exception ex)
@@ -49,7 +67,7 @@ public class TeamManagement {
 		String result="Ready";
 		Integer relationID = -1;
 		RTeamUserDAO relationD=new RTeamUserDAO();
-		relationID = relationD.GetRelation(teamID, memberID).getID();
+		relationID = relationD.GetRelation(memberID,teamID).getID();
 		if (relationID==-1)
 		{
 			result="Delete Member Failed";
@@ -57,7 +75,9 @@ public class TeamManagement {
 		}
 		else
 		{
-			relationD.DeleteRelation(relationID);
+			RTeamUser relation= new RTeamUser();
+			relation.setID(relationID);
+			relationD.deleteMember(relation);
 			result="Delete Member Success";
 		}
 		return result;
@@ -68,7 +88,8 @@ public class TeamManagement {
 		String result="Ready";
 		RTeamUserDAO relationD=new RTeamUserDAO();
 		try{
-			relationD.InsertMember(teamID, memberID);
+			RTeamUser relation=new RTeamUser( teamID, memberID);
+			relationD.insertMember(relation);
 			result="Add Member Success";
 		}
 		catch(Exception ex)
@@ -78,7 +99,7 @@ public class TeamManagement {
 		return result;
 	}
 	
-	public List<User> GetGroupMember(Integer teamID)
+	public List<User> GetTeamMember(Integer teamID)
 	{
 		String result="Ready";
 		TeamDAO teamD=new TeamDAO();

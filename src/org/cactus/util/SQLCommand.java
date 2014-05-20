@@ -18,14 +18,16 @@ public class SQLCommand {
 	public static final String FIND_GROUP_BY_ID="from Group where group_id=?";
 	public static final String FIND_GROUP_BY_PROJECT_ID="from Group where project_id=?";
 	public static final String FIND_USER_BY_NAME="from User where user_name=?";	
+	public static final String FIND_PROJECT_BY_NAME="from Project where project_name=?";	
 	public static final String FIND_USER_BY_MAIL="from User where mail=?";
 	public static final String FIND_USER_BY_ID="from User where user_id=?";
 	public static final String FIND_USERINFO_BY_ID="from UserInfo where userinfo_id=?";
 	public static final String FIND_USERINFO_BY_USER_ID="from UserInfo where user_id=?";
 	public static final String FIND_PROJECT_BY_ID="from Project where creator_id=?";
-	public static final String FIND_USER_BY_GROUP="from Group as g,RGroupUser as r where group_id=? and r.groupID=g.ID";
-	public static final String FIND_USER_BY_TEAM="from Team as t,RTeamUser as r where team_id=? and r.teamID=t.ID";
-	public static final String FIND_USER_BY_PROJECT="from Project as p,RProjectUser as r where project_id=? and r.projectID=p.ID";
+	public static final String FIND_USER_BY_GROUP="from Group as g,RGroupUser as r where r.groupID=? and r.groupID=g.ID";
+	public static final String FIND_USER_BY_TEAM="from Team as t,RTeamUser as r where r.teamID=? and r.teamID=t.ID";
+	public static final String FIND_USER_BY_PROJECT="from Project as p,RProjectUser as r where r.projectID=? and r.projectID=p.ID";
 	public static final String FIND_TEAM_BY_ID="from Team where team_id=?";
+	public static final String FIND_TEAM_BY_CREATOR="from Team where creator_id=?";
 	
 }

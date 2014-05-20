@@ -3,9 +3,9 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 2014-5-7 21:10:49 by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
-    <class name="org.cactus.pojo.RUserTask" table="RUSERTASK">
+    <class name="org.cactus.pojo.RUserTask" table="relation_user_task">
         <id name="ID" type="java.lang.Integer">
-            <column name="ID" />
+            <column name="relation_id" />
           <generator class="identity" />
         </id>
         <property name="userID" type="java.lang.Integer">

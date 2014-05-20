@@ -38,7 +38,7 @@ public class UserManagement {
 	public String validateUser(String email, String password)
 	{
 		User tempUser = new User();
-		String Result = "Validate Readt";
+		String Result = "Validate Ready";
 		
 		UserDAO userD=new UserDAO();
 		tempUser=userD.getUserByEmail(email);
