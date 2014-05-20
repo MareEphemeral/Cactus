@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-5-6 15:29:58 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="org.cactus.pojo.Task" table="TASK">
+        <id name="ID" type="java.lang.Integer">
+            <column name="task_id" />
+              <generator class="identity" />
+        </id>
+        <property name="taskName" type="java.lang.String">
+            <column name="task_name" />
+        </property>
+        <property name="careateTime" type="java.util.Date">
+            <column name="create_time" />
+        </property>
+        <property name="deadline" type="java.util.Date">
+            <column name="deadline" />
+        </property>
+        <property name="progress" type="int">
+            <column name="progress" />
+        </property>
+        <property name="taskSetID" type="int">
+            <column name="taskset_id" />
+        </property>
+        <property name="taskDesc" type="java.lang.String">
+            <column name="task_desc" />
+        </property>
+        <property name="creatorID" type="int">
+            <column name="creator_id" />
+        </property>
+        <property name="state" type="int">
+            <column name="state" />
+        </property>
+    </class>
+</hibernate-mapping>

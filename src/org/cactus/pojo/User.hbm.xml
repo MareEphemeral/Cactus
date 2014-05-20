@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-5-6 16:30:24 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="org.cactus.pojo.User" table="user_base">
+        <id name="ID" type="java.lang.Integer">
+            <column name="user_id" />
+             <generator class="identity" />
+        </id>
+        <property name="password" type="java.lang.String">
+            <column name="password" />
+        </property>
+        <property name="userName" type="java.lang.String">
+            <column name="user_name" />
+        </property>
+        <property name="mail" type="java.lang.String">
+            <column name="mail" />
+        </property>
+         <property name="validateCode" type="java.lang.String">
+            <column name="validate_code" />
+        </property>
+        <property name="userState" type="java.lang.Integer">
+            <column name="user_state" />
+        </property>       
+    </class>
+</hibernate-mapping>

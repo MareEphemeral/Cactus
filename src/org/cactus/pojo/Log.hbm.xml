@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-5-6 18:18:56 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="org.cactus.pojo.Log" table="log">
+        <id name="ID" type="java.lang.Integer">
+            <column name="ID" />
+             <generator class="identity" />
+        </id>
+        <property name="logLevel" type="int">
+            <column name="log_level" />
+        </property>
+        <property name="logBody" type="java.lang.String">
+            <column name="log_body" />
+        </property>
+        <property name="logParticipant" type="int">
+            <column name="log_participant" />
+        </property>
+    </class>
+</hibernate-mapping>

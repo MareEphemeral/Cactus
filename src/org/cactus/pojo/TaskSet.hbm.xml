@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-5-6 15:48:38 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="org.cactus.pojo.TaskSet" table="TASKSET">
+        <id name="ID" type="java.lang.Integer">
+            <column name="taskset_id" />
+            <generator class="identity" />
+        </id>
+        <property name="tasksetName" type="java.lang.String">
+            <column name="taskset_name" />
+        </property>
+        <property name="projectID" type="java.lang.Integer">
+            <column name="project_id" />
+        </property>
+        <property name="creatorID" type="java.lang.Integer">
+            <column name="creator_id" />
+        </property>
+    </class>
+</hibernate-mapping>

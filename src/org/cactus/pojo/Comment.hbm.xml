@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-5-7 21:10:49 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="org.cactus.pojo.Comment" table="COMMENT">
+        <id name="ID" type="java.lang.Integer">
+            <column name="ID" />
+             <generator class="identity" />
+        </id>
+        <property name="commentType" type="int">
+            <column name="comment_type" />
+        </property>
+        <property name="commentBody" type="java.lang.String">
+            <column name="comment_body" />
+        </property>
+        <property name="commentTitle" type="java.lang.String">
+            <column name="comment_title" />
+        </property>
+        <property name="senderID" type="int">
+            <column name="sender_id" />
+        </property>
+        <property name="taskID" type="int">
+            <column name="tasK_id" />
+        </property>
+        <property name="commentTime" type="java.util.Date">
+            <column name="comment_time" />
+        </property>
+        <property name="belongTopicID" type="int">
+            <column name="belong_topic_id" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-5-7 21:10:49 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="org.cactus.pojo.Group" table="authority_group">
+        <id name="ID" type="java.lang.Integer">
+            <column name="group_id" />
+            <generator class="identity" />
+        </id>
+        <property name="groupName" type="java.lang.String">
+            <column name="group_name" />
+        </property>
+          <property name="authorityMap" type="byte[]">
+            <column name="authority_map" />
+        </property>
+        <property name="projectID" type="int">
+            <column name="project_id" />
+        </property>
+    </class>
+</hibernate-mapping>

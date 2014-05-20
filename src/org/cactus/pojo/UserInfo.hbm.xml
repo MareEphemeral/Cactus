@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-5-6 18:18:56 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="org.cactus.pojo.UserInfo" table="USERINFO">
+        <id name="ID" type="java.lang.Integer">
+            <column name="userinfo_id" />
+             <generator class="identity" />
+        </id>
+        <property name="userID" type="int">
+            <column name="user_id" />
+        </property>
+        <property name="realName" type="java.lang.String">
+            <column name="real_name" />
+        </property>
+        <property name="age" type="int">
+            <column name="age" />
+        </property>
+        <property name="phone" type="java.lang.String">
+            <column name="phone" />
+        </property>
+        <property name="selfIntro" type="java.lang.String">
+            <column name="self_intro" />
+        </property>
+        <property name="avatar" type="java.lang.String">
+            <column name="avatar" />
+        </property>
+        <property name="workPlace" type="java.lang.String">
+            <column name="work_place" />
+        </property>
+    </class>
+</hibernate-mapping>

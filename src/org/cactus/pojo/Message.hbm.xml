@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-5-6 18:18:56 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="org.cactus.pojo.Message" table="MESSAGE">
+        <id name="ID" type="java.lang.Integer">
+            <column name="ID" />
+             <generator class="identity" />
+        </id>
+        <property name="senderID" type="int">
+            <column name="sender_id" />
+        </property>
+        <property name="receiverID" type="int">
+            <column name="receiver_id" />
+        </property>
+        <property name="messageLevel" type="int">
+            <column name="message_level" />
+        </property>
+        <property name="timestamp" type="java.util.Date">
+            <column name="timestamp" />
+        </property>
+        <property name="messageBody" type="java.lang.String">
+            <column name="message_body" />
+        </property>
+    </class>
+</hibernate-mapping>

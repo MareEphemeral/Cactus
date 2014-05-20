@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+                                         "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+ <session-factory>
+  <property name="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</property>
+  <property name="hibernate.connection.driver_class">net.sourceforge.jtds.jdbc.Driver</property>
+  <property name="hibernate.connection.password">mare</property>
+  <property name="hibernate.connection.url">jdbc:jtds:sqlserver://localhost:6000;DatabaseName=Cactus</property>
+  <property name="hibernate.connection.username">sa</property>
+  <property name="hibernate.show_sql">true</property>
+  <property name="hibernate.format_sql">true</property>
+  <mapping class="org.cactus.pojo.Task" resource="org/cactus/pojo/Task.hbm.xml"/>
+  <mapping class="org.cactus.pojo.TaskSet" resource="org/cactus/pojo/TaskSet.hbm.xml"/>
+  <mapping class="org.cactus.pojo.Project" resource="org/cactus/pojo/Project.hbm.xml"/>
+  <mapping class="org.cactus.pojo.Document" resource="org/cactus/pojo/Document.hbm.xml"/>
+  <mapping class="org.cactus.pojo.Comment" resource="org/cactus/pojo/Comment.hbm.xml"/>
+  <mapping class="org.cactus.pojo.File" resource="org/cactus/pojo/File.hbm.xml"/>
+  <mapping class="org.cactus.pojo.RGroupUser" resource="org/cactus/pojo/RGroupUser.hbm.xml"/>
+  <mapping class="org.cactus.pojo.RProjectUser" resource="org/cactus/pojo/RProjectUser.hbm.xml"/>
+  <mapping class="org.cactus.pojo.RTeamUser" resource="org/cactus/pojo/RTeamUser.hbm.xml"/>
+  <mapping class="org.cactus.pojo.RUserTask" resource="org/cactus/pojo/RUserTask.hbm.xml"/>
+  <mapping class="org.cactus.pojo.Team" resource="org/cactus/pojo/Team.hbm.xml"/>
+  <mapping class="org.cactus.pojo.User" resource="org/cactus/pojo/User.hbm.xml"/>
+  <mapping class="org.cactus.pojo.UserInfo" resource="org/cactus/pojo/UserInfo.hbm.xml"/>
+  <mapping class="org.cactus.pojo.Group" resource="org/cactus/pojo/Group.hbm.xml"/>
+ </session-factory>
+</hibernate-configuration>

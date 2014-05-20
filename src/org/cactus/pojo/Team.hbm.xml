@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-5-7 21:10:49 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="org.cactus.pojo.Team" table="TEAM">
+        <id name="teamID" type="java.lang.Integer">
+            <column name="TEAMID" />
+            <generator class="identity" />
+        </id>
+        <property name="teamName" type="java.lang.String">
+            <column name="team_name" />
+        </property>
+        <property name="teamIntro" type="java.lang.String">
+            <column name="team_intro" />
+        </property>
+        <property name="creatorID" type="java.lang.Integer">
+            <column name="creator_id" />
+        </property>
+    </class>
+</hibernate-mapping>
