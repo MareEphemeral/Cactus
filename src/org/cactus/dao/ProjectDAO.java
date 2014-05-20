@@ -40,6 +40,10 @@ public class ProjectDAO {
 		pDAO.publicUpdate(project);
 	}
 	
+	public Project getProject(Integer projectID) throws HibernateException {
+		return (Project)pDAO.publicSearchByID(projectID, SQLCommand.FIND_PROJECT_BY_ID_EM);
+	}
+	
 	public Project getProjectByName(String projectName) throws HibernateException {
 		String[] types={"s"};
 		Object[] paras={projectName};
@@ -79,6 +83,25 @@ public class ProjectDAO {
 				Trueresult.add(userD.getUser(((RProjectUser)temp[1]).getUserID()));
 			}
 			if (!Result.isEmpty()){
+				return  Trueresult;
+			}
+				else return null;
+	 }
+	 
+	 public List<Project> getProjectByUser(int userID) throws HibernateException { 
+			String[] types={"i"};
+			Object[] paras={userID};
+			
+			ProjectDAO projectD=new  ProjectDAO();
+			List<Object> Result=pDAO.publicAdvancedSearch(types, paras, SQLCommand.FIND_PROJECT_BY_USER);
+			List<Project> Trueresult;
+			Trueresult = new ArrayList<Project>();
+			for (int i=0;i<Result.size();i++)
+			{
+				Object[] temp = (Object[])Result.get(i);				
+				Trueresult.add(projectD.getProject(((RProjectUser)temp[1]).getProjectID()));
+			}
+			if (!Trueresult.isEmpty()){
 				return  Trueresult;
 			}
 				else return null;

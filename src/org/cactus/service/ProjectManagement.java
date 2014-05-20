@@ -59,6 +59,12 @@ public class ProjectManagement {
 		return projectD.getMyProject(userID);
 	}
 	
+	public List<Project> getMyProjectEm(int userID)
+	{
+		ProjectDAO projectD=new ProjectDAO();
+		return projectD.getProjectByUser(userID);
+	}
+	
 	public List<User> getProjectMember(Integer projectIDD)
 	{
 		String result="Ready";

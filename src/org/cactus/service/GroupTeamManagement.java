@@ -46,7 +46,17 @@ public class GroupTeamManagement {
 			return null;
 		}	
 	}
-	
+	public boolean CheckAuhourity(int userID,int projectID,int type)
+	{
+		boolean result=false;
+		GroupDAO groupD=new GroupDAO();
+		byte temp = groupD.GetAuthority(projectID, userID)[type];
+		if (temp==(byte)1)
+		{
+			result = true;
+		}
+		return result;
+	}
 	public String SetAuthority(Integer AuthorityType, Integer groupID, byte newAuthority){	
 
 		String result="ready";

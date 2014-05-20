@@ -1,12 +1,15 @@
 package org.cactus.test;
 
 import java.util.Date;
+import java.util.List;
 
 import org.cactus.dao.GroupDAO;
 import org.cactus.dao.ProjectDAO;
 import org.cactus.dao.TaskDAO;
 import org.cactus.dao.TaskSetDAO;
+import org.cactus.pojo.Project;
 import org.cactus.pojo.Task;
+import org.cactus.pojo.User;
 import org.cactus.service.GroupTeamManagement;
 import org.cactus.service.ProjectManagement;
 import org.cactus.service.TeamManagement;
@@ -17,9 +20,12 @@ import org.hibernate.cfg.Configuration;
 public class Test {
 
 	public static void main(String[] args) {
-		TeamManagement tm=new TeamManagement();
-		String s = tm.GetTeamMember(1).get(0).getUserName();
-		s = tm.DeleteTeam(1);
+		GroupTeamManagement pm=new GroupTeamManagement();
+		boolean a = pm.CheckAuhourity(1, 1, 1);
+		if (a){
+			String s = "";
+			s = "1";
+		}
 	}
 
 }
